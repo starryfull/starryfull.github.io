@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>XStar</title>
-    <link>http://example.org/</link>
+    <link>https://starryfull.github.io/</link>
     <description>Recent content on XStar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 17 Mar 2023 16:03:18 +0800</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Mar 2023 16:03:18 +0800</lastBuildDate><atom:link href="https://starryfull.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My First Post</title>
-      <link>http://example.org/posts/my-first-post/</link>
+      <link>https://starryfull.github.io/posts/my-first-post/</link>
       <pubDate>Fri, 17 Mar 2023 16:03:18 +0800</pubDate>
       
-      <guid>http://example.org/posts/my-first-post/</guid>
+      <guid>https://starryfull.github.io/posts/my-first-post/</guid>
       <description>分治 引入 ​	我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区&amp;hellip;&amp;hellip;.
 ​	然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。
 ​	正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。
