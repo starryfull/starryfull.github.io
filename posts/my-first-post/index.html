@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My First Post | XStar</title>
+<meta name="keywords" content="">
+<meta name="description" content="分治 引入 ​	我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区&hellip;&hellip;.
+​	然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。
+​	正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。
+​	倘若，没有这样的管理方式，在茫茫人海中，要想知道是谁感染了病毒，这无异于大海捞针，效率简直不要太低。
+概念 ​	分治算法（divide and conquer）的核心思想就是分而治之，把一个复杂问题分成两个或者更多的相同和相似的问题，直到最后问题可以简单的直接求解，原问题的解即是子问题解的合并。
+与递归的区别：
+分治是一种思想；
+递归是一种方法；
+分治可以用递归来实现，也可以用循环
+分治算法的递归实现中，每一层递归都会涉及这样三个操作：
+分解：将原问题分解成一系列子问题； 解决：递归地求解各个子问题，若子问题足够小，则直接求解； 合并：将子问题的结果合并成原问题。 图解 举个例子：给定一个字符串，把它的每个字符都变成大写
+可以写循环，或者递归
+模板 分治法的一般算法设计模式如下：
+int divideConquer(int n) { if (n &lt;= n0) { //n为问题规模 ,n0为可解子问题的规模 解子问题; return (子问题的解); } for (i = 1; i &lt;= k; i&#43;&#43;) { //分解成较小的子问题p1,p2,...,pk yi = divideConquer(Pi); //递归解决 } T = MERGE(y1, y2, ...,yk); //合并子问题 return (T);//返回问题的解 } 例题 不修改数组找出重复的数字 题目描述 给定一个长度为 n&#43;1 的数组nums，数组中所有的数均在 1∼n 的范围内，其中 n≥1。">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/posts/my-first-post/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.62aa25427797f8efd87301a5b69795dc50df2dbe79a5fba0648cc7bb8dbcd7c9.css" integrity="sha256-YqolQneX&#43;O/YcwGltpeV3FDfLb55pfugZIzHu42818k=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.acb54fd32bbc1982428b8850317e45d076b95012730a5936667e6bc21777692a.js" integrity="sha256-rLVP0yu8GYJCi4hQMX5F0Ha5UBJzClk2Zn5rwhd3aSo="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="My First Post" />
+<meta property="og:description" content="分治 引入 ​	我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区&hellip;&hellip;.
+​	然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。
+​	正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。
+​	倘若，没有这样的管理方式，在茫茫人海中，要想知道是谁感染了病毒，这无异于大海捞针，效率简直不要太低。
+概念 ​	分治算法（divide and conquer）的核心思想就是分而治之，把一个复杂问题分成两个或者更多的相同和相似的问题，直到最后问题可以简单的直接求解，原问题的解即是子问题解的合并。
+与递归的区别：
+分治是一种思想；
+递归是一种方法；
+分治可以用递归来实现，也可以用循环
+分治算法的递归实现中，每一层递归都会涉及这样三个操作：
+分解：将原问题分解成一系列子问题； 解决：递归地求解各个子问题，若子问题足够小，则直接求解； 合并：将子问题的结果合并成原问题。 图解 举个例子：给定一个字符串，把它的每个字符都变成大写
+可以写循环，或者递归
+模板 分治法的一般算法设计模式如下：
+int divideConquer(int n) { if (n &lt;= n0) { //n为问题规模 ,n0为可解子问题的规模 解子问题; return (子问题的解); } for (i = 1; i &lt;= k; i&#43;&#43;) { //分解成较小的子问题p1,p2,...,pk yi = divideConquer(Pi); //递归解决 } T = MERGE(y1, y2, ...,yk); //合并子问题 return (T);//返回问题的解 } 例题 不修改数组找出重复的数字 题目描述 给定一个长度为 n&#43;1 的数组nums，数组中所有的数均在 1∼n 的范围内，其中 n≥1。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/my-first-post/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-17T16:03:18+08:00" />
+<meta property="article:modified_time" content="2023-03-17T16:03:18+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My First Post"/>
+<meta name="twitter:description" content="分治 引入 ​	我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区&hellip;&hellip;.
+​	然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。
+​	正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。
+​	倘若，没有这样的管理方式，在茫茫人海中，要想知道是谁感染了病毒，这无异于大海捞针，效率简直不要太低。
+概念 ​	分治算法（divide and conquer）的核心思想就是分而治之，把一个复杂问题分成两个或者更多的相同和相似的问题，直到最后问题可以简单的直接求解，原问题的解即是子问题解的合并。
+与递归的区别：
+分治是一种思想；
+递归是一种方法；
+分治可以用递归来实现，也可以用循环
+分治算法的递归实现中，每一层递归都会涉及这样三个操作：
+分解：将原问题分解成一系列子问题； 解决：递归地求解各个子问题，若子问题足够小，则直接求解； 合并：将子问题的结果合并成原问题。 图解 举个例子：给定一个字符串，把它的每个字符都变成大写
+可以写循环，或者递归
+模板 分治法的一般算法设计模式如下：
+int divideConquer(int n) { if (n &lt;= n0) { //n为问题规模 ,n0为可解子问题的规模 解子问题; return (子问题的解); } for (i = 1; i &lt;= k; i&#43;&#43;) { //分解成较小的子问题p1,p2,...,pk yi = divideConquer(Pi); //递归解决 } T = MERGE(y1, y2, ...,yk); //合并子问题 return (T);//返回问题的解 } 例题 不修改数组找出重复的数字 题目描述 给定一个长度为 n&#43;1 的数组nums，数组中所有的数均在 1∼n 的范围内，其中 n≥1。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "My First Post",
+      "item": "http://example.org/posts/my-first-post/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My First Post",
+  "name": "My First Post",
+  "description": "分治 引入 ​\t我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区\u0026hellip;\u0026hellip;.\n​\t然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。\n​\t正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。\n​\t倘若，没有这样的管理方式，在茫茫人海中，要想知道是谁感染了病毒，这无异于大海捞针，效率简直不要太低。\n概念 ​\t分治算法（divide and conquer）的核心思想就是分而治之，把一个复杂问题分成两个或者更多的相同和相似的问题，直到最后问题可以简单的直接求解，原问题的解即是子问题解的合并。\n与递归的区别：\n分治是一种思想；\n递归是一种方法；\n分治可以用递归来实现，也可以用循环\n分治算法的递归实现中，每一层递归都会涉及这样三个操作：\n分解：将原问题分解成一系列子问题； 解决：递归地求解各个子问题，若子问题足够小，则直接求解； 合并：将子问题的结果合并成原问题。 图解 举个例子：给定一个字符串，把它的每个字符都变成大写\n可以写循环，或者递归\n模板 分治法的一般算法设计模式如下：\nint divideConquer(int n) { if (n \u0026lt;= n0) { //n为问题规模 ,n0为可解子问题的规模 解子问题; return (子问题的解); } for (i = 1; i \u0026lt;= k; i++) { //分解成较小的子问题p1,p2,...,pk yi = divideConquer(Pi); //递归解决 } T = MERGE(y1, y2, ...,yk); //合并子问题 return (T);//返回问题的解 } 例题 不修改数组找出重复的数字 题目描述 给定一个长度为 n+1 的数组nums，数组中所有的数均在 1∼n 的范围内，其中 n≥1。",
+  "keywords": [
+    
+  ],
+  "articleBody": "分治 引入 ​\t我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区…….\n​\t然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。\n​\t正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。\n​\t倘若，没有这样的管理方式，在茫茫人海中，要想知道是谁感染了病毒，这无异于大海捞针，效率简直不要太低。\n概念 ​\t分治算法（divide and conquer）的核心思想就是分而治之，把一个复杂问题分成两个或者更多的相同和相似的问题，直到最后问题可以简单的直接求解，原问题的解即是子问题解的合并。\n与递归的区别：\n分治是一种思想；\n递归是一种方法；\n分治可以用递归来实现，也可以用循环\n分治算法的递归实现中，每一层递归都会涉及这样三个操作：\n分解：将原问题分解成一系列子问题； 解决：递归地求解各个子问题，若子问题足够小，则直接求解； 合并：将子问题的结果合并成原问题。 图解 举个例子：给定一个字符串，把它的每个字符都变成大写\n可以写循环，或者递归\n模板 分治法的一般算法设计模式如下：\nint divideConquer(int n) { if (n \u003c= n0) { //n为问题规模 ,n0为可解子问题的规模 解子问题; return (子问题的解); } for (i = 1; i \u003c= k; i++) { //分解成较小的子问题p1,p2,...,pk yi = divideConquer(Pi); //递归解决 } T = MERGE(y1, y2, ...,yk); //合并子问题 return (T);//返回问题的解 } 例题 不修改数组找出重复的数字 题目描述 给定一个长度为 n+1 的数组nums，数组中所有的数均在 1∼n 的范围内，其中 n≥1。\n请找出数组中任意一个重复的数，但不能修改输入的数组。\n数据范围 1≤n≤1000\n样例 ·给定 nums = [2, 3, 5, 4, 3, 2, 6, 7]。 返回 2 或 3。 思考题：如果只能使用 O(1) 的额外空间，该怎么做呢？\n算法分析 分治\u0026抽屉原理 抽屉原理：n+1 个苹果放在 n 个抽屉里，那么至少有一个抽屉中会放两个苹果。\n用在这个题目中就是，一共有 n+1 个数，每个数的取值范围是1到n，所以至少会有一个数出现两次。\n然后我们采用分治的思想，将每个数的取值的区间[1, n]划分成[1, n/2]和[n/2+1, n]两个子区间，然后分别统计两个区间中数的个数。 注意这里的区间是指数的取值范围，而不是数组下标。\n划分之后，左右两个区间里一定至少存在一个区间，区间中数的个数大于区间长度。 这个可以用反证法来说明：如果两个区间中数的个数都小于等于区间长度，那么整个区间中数的个数就小于等于n，和有n+1个数矛盾。\n因此我们可以把问题划归到左右两个子区间中的一个，而且由于区间中数的个数大于区间长度，根据抽屉原理，在这个子区间中一定存在某个数出现了两次。\n依次类推，每次我们可以把区间长度缩小一半，直到区间长度为1时，我们就找到了答案。\n复杂度分析 时间复杂度：每次会将区间长度缩小一半，一共会缩小 O(logn) 次。每次统计两个子区间中的数时需要遍历整个数组，时间复杂度是 O(n)。所以总时间复杂度是 O(nlogn)。 空间复杂度：代码中没有用到额外的数组，所以额外的空间复杂度是 O(1)。\n代码 class Solution { public: int duplicateInArray(vector\u003cint\u003e nums) { int l = 1, r = nums.size() - 1; while (l \u003c r) { int mid = l + r \u003e\u003e 1; int s = 0; for (auto x: nums) s += x \u003e= l \u0026\u0026 x \u003c= mid; if (s \u003e mid - l + 1) r = mid; else l = mid + 1; } return r; } }; 回溯 引入 ​\t然而呢，刚才那个上级阶层的领导比较笨，他虽然知道这样分治管理，但是呢，他不知道可以同时进行，他只知道挨着挨着来，搜完第一个省再搜第二个省份。所以呢，这样分到第一个社区，核酸检测全是阴性，然后该社区的管理员报告给领导，领导再指示调查第二个社区，如果这个城镇所有的社区全部都已经检查是阴性，那么上级领导就该指示调查下一个城镇了。\n​\t像这样，会把调查结果返回给上级，再请示下一步操作的过程，就是回溯法。\n概念 ​\t回溯法（探索与回溯法）是一种选优搜索法，又称为试探法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的方法称为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。\n​\t回溯是递归的副产品，只要有递归就会有回溯，所以回溯法也经常和二叉树遍历，深度优先搜索混在一起，因为这两种方式都是用了递归。\n​\t所有回溯法的问题都可以抽象为树形结构，精髓就是使用递归控制for循环嵌套的数量。因为回溯法解决的都是在集合中递归查找子集，集合的大小就构成了树的宽度，递归的深度，都构成的树的深度。因为递归要有终止条件，所以必然是一颗高度有限的树（N叉树）。从根节点一直走到叶子节点。叶子节点为满足条件的一个解决方案。（横向遍历，纵向递归）\n回溯算法能解决如下问题：\n组合问题：N个数里面按一定规则找出k个数的集合 排列问题：N个数按一定规则全排列，有几种排列方式 切割问题：一个字符串按一定规则有几种切割方式 子集问题：一个N个数的集合里有多少符合条件的子集 棋盘问题：N皇后，解数独等等 模板 void dfs(参数) { if (满足终止条件) { 存放结果 return; } for (遍历本层集合中的元素) { 处理结点; dfs(参数);//递归 撤销处理该结点; //回溯 } } 例题 递归实现组合型枚举 题目描述 从 1∼n 这 n 个整数中随机选出 m 个，输出所有可能的选择方案。\n输入格式 两个整数 n, m 在同一行用空格隔开。\n输出格式 按照从小到大的顺序输出所有方案，每行 1 个。\n首先，同一行内的数升序排列，相邻两个数用一个空格隔开。\n其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面（例如 1 3 5 7 排在 1 3 6 8 前面）。\n数据范围 n \u003e 0, 0 ≤ m ≤ n , n + ( n − m) ≤ 25\n输入样例 5 3 输出样例 1 2 3 1 2 4 1 2 5 1 3 4 1 3 5 1 4 5 2 3 4 2 3 5 2 4 5 3 4 5 算法分析 ​\t最开始的想法就是使用for进行遍历，k=2时可以使用两层for循环，k=3时可以使用3层for循环进行嵌套，但是当k=10时就要使用10个for循环进行嵌套，这显然是不可能的。\n​\t进而我们想到使用递归，每一个递归都是一个for循环，到达终止条件即到达最后一个循环结束递归。\n终止条件：每一次dfs都是将从根节点到叶子节点的数据依次存入num，程序走到叶子节点，即num.size() == k，将符合条件结果保存，并结束递归。\n循环：使用for循环横向遍历，递归纵向遍历\n剪枝 因为回溯的本质是穷举，穷举所有可能，然后选出我们想要的答案，如果想让回溯法高效一些，可以加一些剪枝的操作，但也改不了回溯法就是穷举的本质。\n当n=4,k=4时，由下图可看出第一层for循环的时候，从元素2开始的遍历都没有意义了。在第二层for循环，从元素3开始的遍历都没有意义了。我们可以使用剪枝不进行这些搜索。\n剪枝精髓是：for循环在寻找起点的时候要有一个范围，如果这个起点到集合终止之间的元素已经不够题目要求的k个元素了，就没有必要搜索了。 代码 #include #include using namespace std; int n, m; vector\u003cint\u003e num; void dfs(int k) { if (num.size() \u003e m || num.size() + (n - k + 1) \u003c m)\t// 剪枝 return; if (num.size() == m) {\t// 剪枝 for (int i = 0; i \u003c m; ++i) cout \u003c\u003c num[i] \u003c\u003c \" \"; cout \u003c\u003c endl; return; } num.push_back(k); dfs(k + 1); num.pop_back();\t// 回溯 dfs(k + 1); } int main(void) { cin \u003e\u003e n \u003e\u003e m; dfs(1); return 0; } n-皇后问题 题目描述 n−皇后问题是指将 n 个皇后放在 n×n 的国际象棋棋盘上，使得皇后不能相互攻击到，即任意两个皇后都不能处于同一行、同一列或同一斜线上。\n现在给定整数 n，请你输出所有的满足条件的棋子摆法。\n输入格式 共一行，包含整数 n。\n输出格式 每个解决方案占 n 行，每行输出一个长度为 n 的字符串，用来表示完整的棋盘状态。\n其中 . 表示某一个位置的方格状态为空，Q 表示某一个位置的方格上摆着皇后。\n每个方案输出完成后，输出一个空行。\n注意：行末不能有多余空格。\n输出方案的顺序任意，只要不重复且没有遗漏即可。\n数据范围 1≤n≤9\n输入样例 4 输出样例 .Q.. ...Q Q... ..Q. ..Q. Q... ...Q .Q.. 算法分析 按行枚举 代码 #include using namespace std; const int N = 20;\t// 对角线为 2n-1 条 int n; char g[N][N]; bool col[N], dg[N], udg[N]; void dfs(int x) { if (x == n) { for (int i = 0; i \u003c n; ++i) puts(g[i]); puts(\"\"); return; } for (int y = 0; y \u003c n; ++y) if (!col[y] \u0026\u0026 !dg[y - x + n] \u0026\u0026 !udg[y + x]) {\t// 剪枝 col[y] = dg[y - x + n] = udg[y + x] = true; g[x][y] = 'Q'; dfs(x + 1); g[x][y] = '.';\t// 回溯 col[y] = dg[y - x + n] = udg[y + x] = false; } } int main() { cin \u003e\u003e n; for (int i = 0; i \u003c n; ++i) for (int j = 0; j \u003c n; ++j) g[i][j] = '.'; dfs(0); return 0; } ",
+  "wordCount" : "589",
+  "inLanguage": "en",
+  "datePublished": "2023-03-17T16:03:18+08:00",
+  "dateModified": "2023-03-17T16:03:18+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/posts/my-first-post/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "XStar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="XStar (Alt + H)">XStar</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      My First Post<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h1>
+    <div class="post-meta"><span title='2023-03-17 16:03:18 +0800 CST'>March 17, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="分治">分治<a hidden class="anchor" aria-hidden="true" href="#分治">#</a></h1>
+<h2 id="引入">引入<a hidden class="anchor" aria-hidden="true" href="#引入">#</a></h2>
+<p>​		我们国家有着广阔的土地和众多的人口，为了方便管理，分为了很多省份，每个省又分为很多的市，每个市又分为很多的县，每个县又分为很多的镇，每个镇又分为很多的社区&hellip;&hellip;.</p>
+<p>​		然后呢，现在，根据小道消息，某某人感染了病毒，但是我们都不认识他，上级阶层的领导知道了这个消息，他想要快速且高效的知道这个人是谁，所以，他就把这个任务交给每个省的省长，省长又交给市长，市长又交给县长，县长又交给镇长，镇长又交给社区，最终每个社区，进行核酸检测，于是就知道是谁感染了病毒。</p>
+<p>​		正是因为这样，上级阶层的领导才能快速知道，并且做出相应的措施，以迅速防止疫情蔓延。</p>
+<p>​		倘若，没有这样的管理方式，在茫茫人海中，要想知道是谁感染了病毒，这无异于大海捞针，效率简直不要太低。</p>
+<h2 id="概念">概念<a hidden class="anchor" aria-hidden="true" href="#概念">#</a></h2>
+<blockquote>
+<p>​		<strong>分治算法（divide and conquer）的核心思想就是分而治之，把一个复杂问题分成两个或者更多</strong>的相同和相似的问题，直到最后问题可以简单的直接求解，原问题的解即是子问题解的合并。</p>
+</blockquote>
+<p><strong>与递归的区别：</strong></p>
+<ul>
+<li>
+<p>分治是一种思想；</p>
+</li>
+<li>
+<p>递归是一种方法；</p>
+</li>
+<li>
+<p>分治可以用递归来实现，也可以用循环</p>
+</li>
+</ul>
+<p><strong>分治算法的递归实现中，每一层递归都会涉及这样三个操作：</strong></p>
+<ul>
+<li>分解：将原问题分解成一系列子问题；</li>
+<li>解决：递归地求解各个子问题，若子问题足够小，则直接求解；</li>
+<li>合并：将子问题的结果合并成原问题。</li>
+</ul>
+<h2 id="图解">图解<a hidden class="anchor" aria-hidden="true" href="#图解">#</a></h2>
+<p><img loading="lazy" src="https://img2020.cnblogs.com/blog/1247221/202004/1247221-20200420112838452-1135632414.png" alt="img"  />
+</p>
+<p><strong>举个例子</strong>：给定一个字符串，把它的每个字符都变成大写</p>
+<p><strong>可以写循环，或者递归</strong></p>
+<p><img loading="lazy" src="https://img2020.cnblogs.com/blog/1247221/202004/1247221-20200420113038728-1944685806.png" alt="img"  />
+</p>
+<h2 id="模板">模板<a hidden class="anchor" aria-hidden="true" href="#模板">#</a></h2>
+<p>分治法的一般算法设计模式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">divideConquer</span>(<span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;=</span> n0) {  <span style="color:#75715e">//n为问题规模 ,n0为可解子问题的规模
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#960050;background-color:#1e0010">解子问题</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (<span style="color:#960050;background-color:#1e0010">子问题的解</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> k; i<span style="color:#f92672">++</span>) {  <span style="color:#75715e">//分解成较小的子问题p1,p2,...,pk
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        yi <span style="color:#f92672">=</span> divideConquer(Pi);    <span style="color:#75715e">//递归解决
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    T <span style="color:#f92672">=</span> MERGE(y1, y2, ...,yk);  <span style="color:#75715e">//合并子问题
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> (T);<span style="color:#75715e">//返回问题的解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="例题">例题<a hidden class="anchor" aria-hidden="true" href="#例题">#</a></h2>
+<h3 id="不修改数组找出重复的数字httpswwwacwingcomproblemcontentdescription15"><a href="https://www.acwing.com/problem/content/description/15/">不修改数组找出重复的数字</a><a hidden class="anchor" aria-hidden="true" href="#不修改数组找出重复的数字httpswwwacwingcomproblemcontentdescription15">#</a></h3>
+<h4 id="题目描述">题目描述<a hidden class="anchor" aria-hidden="true" href="#题目描述">#</a></h4>
+<p>给定一个长度为 n+1 的数组<code>nums</code>，数组中所有的数均在 1∼n 的范围内，其中 n≥1。</p>
+<p>请找出数组中任意一个重复的数，但不能修改输入的数组。</p>
+<h4 id="数据范围">数据范围<a hidden class="anchor" aria-hidden="true" href="#数据范围">#</a></h4>
+<p>1≤n≤1000</p>
+<h4 id="样例">样例<a hidden class="anchor" aria-hidden="true" href="#样例">#</a></h4>
+<pre tabindex="0"><code>·给定 nums = [2, 3, 5, 4, 3, 2, 6, 7]。
+
+返回 2 或 3。
+</code></pre><p><strong>思考题</strong>：如果只能使用 O(1) 的额外空间，该怎么做呢？</p>
+<h4 id="算法分析">算法分析<a hidden class="anchor" aria-hidden="true" href="#算法分析">#</a></h4>
+<h5 id="分治抽屉原理">分治&amp;抽屉原理<a hidden class="anchor" aria-hidden="true" href="#分治抽屉原理">#</a></h5>
+<p><strong>抽屉原理</strong>：n+1 个苹果放在 n 个抽屉里，那么至少有一个抽屉中会放两个苹果。</p>
+<p>用在这个题目中就是，一共有 n+1 个数，每个数的取值范围是1到n，所以至少会有一个数出现两次。</p>
+<p>然后我们采用分治的思想，将每个数的取值的区间[1, n]划分成[1, n/2]和[n/2+1, n]两个子区间，然后分别统计两个区间中数的个数。
+注意这里的区间是指<strong>数的取值范围</strong>，而不是<strong>数组下标</strong>。</p>
+<p>划分之后，左右两个区间里一定至少存在一个区间，区间中数的个数大于区间长度。
+这个可以用反证法来说明：如果两个区间中数的个数都小于等于区间长度，那么整个区间中数的个数就小于等于n，和有n+1个数矛盾。</p>
+<p>因此我们可以把问题划归到左右两个子区间中的一个，而且由于区间中数的个数大于区间长度，根据抽屉原理，在这个子区间中一定存在某个数出现了两次。</p>
+<p>依次类推，每次我们可以把区间长度缩小一半，直到区间长度为1时，我们就找到了答案。</p>
+<h5 id="复杂度分析">复杂度分析<a hidden class="anchor" aria-hidden="true" href="#复杂度分析">#</a></h5>
+<p><strong>时间复杂度</strong>：每次会将区间长度缩小一半，一共会缩小 O(logn) 次。每次统计两个子区间中的数时需要遍历整个数组，时间复杂度是 O(n)。所以总时间复杂度是 O(nlogn)。
+<strong>空间复杂度</strong>：代码中没有用到额外的数组，所以额外的空间复杂度是 O(1)。</p>
+<h4 id="代码">代码<a hidden class="anchor" aria-hidden="true" href="#代码">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> duplicateInArray(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, r <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (l <span style="color:#f92672">&lt;</span> r) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> l <span style="color:#f92672">+</span> r <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> x: nums) s <span style="color:#f92672">+=</span> x <span style="color:#f92672">&gt;=</span> l <span style="color:#f92672">&amp;&amp;</span> x <span style="color:#f92672">&lt;=</span> mid;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (s <span style="color:#f92672">&gt;</span> mid <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) r <span style="color:#f92672">=</span> mid;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> l <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> r;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="回溯">回溯<a hidden class="anchor" aria-hidden="true" href="#回溯">#</a></h1>
+<h2 id="引入-1">引入<a hidden class="anchor" aria-hidden="true" href="#引入-1">#</a></h2>
+<p>​		然而呢，刚才那个上级阶层的领导比较笨，他虽然知道这样分治管理，但是呢，他不知道可以同时进行，他只知道挨着挨着来，搜完第一个省再搜第二个省份。所以呢，这样分到第一个社区，核酸检测全是阴性，然后该社区的管理员报告给领导，领导再指示调查第二个社区，如果这个城镇所有的社区全部都已经检查是阴性，那么上级领导就该指示调查下一个城镇了。</p>
+<p>​		像这样，会把调查结果返回给上级，再请示下一步操作的过程，就是回溯法。</p>
+<h2 id="概念-1">概念<a hidden class="anchor" aria-hidden="true" href="#概念-1">#</a></h2>
+<blockquote>
+<p>​		回溯法（探索与回溯法）是一种选优搜索法，又称为试探法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的方法称为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。</p>
+</blockquote>
+<p>​		<strong>回溯是递归的副产品，只要有递归就会有回溯</strong>，所以回溯法也经常和二叉树遍历，深度优先搜索混在一起，因为这两种方式都是用了递归。</p>
+<p>​		所有回溯法的问题都可以抽象为树形结构，精髓就是使用递归控制for循环嵌套的数量。因为回溯法解决的都是在集合中递归查找子集，集合的大小就构成了树的宽度，递归的深度，都构成的树的深度。因为递归要有终止条件，所以必然是一颗高度有限的树（N叉树）。从根节点一直走到叶子节点。叶子节点为满足条件的一个解决方案。（横向遍历，纵向递归）</p>
+<p><strong>回溯算法能解决如下问题：</strong></p>
+<ul>
+<li>组合问题：N个数里面按一定规则找出k个数的集合</li>
+<li>排列问题：N个数按一定规则全排列，有几种排列方式</li>
+<li>切割问题：一个字符串按一定规则有几种切割方式</li>
+<li>子集问题：一个N个数的集合里有多少符合条件的子集</li>
+<li>棋盘问题：N皇后，解数独等等</li>
+</ul>
+<h2 id="模板-1">模板<a hidden class="anchor" aria-hidden="true" href="#模板-1">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(<span style="color:#960050;background-color:#1e0010">参数</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">满足终止条件</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">存放结果</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">遍历本层集合中的元素</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">处理结点</span>;
+</span></span><span style="display:flex;"><span>        dfs(<span style="color:#960050;background-color:#1e0010">参数</span>);<span style="color:#75715e">//递归
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#960050;background-color:#1e0010">撤销处理该结点</span>; <span style="color:#75715e">//回溯
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="例题-1">例题<a hidden class="anchor" aria-hidden="true" href="#例题-1">#</a></h2>
+<h3 id="递归实现组合型枚举httpswwwacwingcomproblemcontent95"><a href="https://www.acwing.com/problem/content/95/">递归实现组合型枚举</a><a hidden class="anchor" aria-hidden="true" href="#递归实现组合型枚举httpswwwacwingcomproblemcontent95">#</a></h3>
+<h4 id="题目描述-1">题目描述<a hidden class="anchor" aria-hidden="true" href="#题目描述-1">#</a></h4>
+<p>从 1∼n 这 n 个整数中随机选出 m 个，输出所有可能的选择方案。</p>
+<h4 id="输入格式">输入格式<a hidden class="anchor" aria-hidden="true" href="#输入格式">#</a></h4>
+<p>两个整数 n, m 在同一行用空格隔开。</p>
+<h4 id="输出格式">输出格式<a hidden class="anchor" aria-hidden="true" href="#输出格式">#</a></h4>
+<p>按照从小到大的顺序输出所有方案，每行 1 个。</p>
+<p>首先，同一行内的数升序排列，相邻两个数用一个空格隔开。</p>
+<p>其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面（例如 <code>1 3 5 7</code> 排在 <code>1 3 6 8</code> 前面）。</p>
+<h4 id="数据范围-1">数据范围<a hidden class="anchor" aria-hidden="true" href="#数据范围-1">#</a></h4>
+<p>n &gt; 0,
+0 ≤ m ≤ n ,
+n + ( n − m)  ≤ 25</p>
+<h4 id="输入样例">输入样例<a hidden class="anchor" aria-hidden="true" href="#输入样例">#</a></h4>
+<pre tabindex="0"><code>5 3
+</code></pre><h4 id="输出样例">输出样例<a hidden class="anchor" aria-hidden="true" href="#输出样例">#</a></h4>
+<pre tabindex="0"><code>1 2 3 
+1 2 4 
+1 2 5 
+1 3 4 
+1 3 5 
+1 4 5 
+2 3 4 
+2 3 5 
+2 4 5 
+3 4 5 
+</code></pre><h4 id="算法分析-1">算法分析<a hidden class="anchor" aria-hidden="true" href="#算法分析-1">#</a></h4>
+<p>​		最开始的想法就是使用for进行遍历，k=2时可以使用两层for循环，k=3时可以使用3层for循环进行嵌套，但是当k=10时就要使用10个for循环进行嵌套，这显然是不可能的。</p>
+<p>​		进而我们想到使用递归，每一个递归都是一个for循环，到达终止条件即到达最后一个循环结束递归。</p>
+<p><img loading="lazy" src="https://img-blog.csdnimg.cn/120502beb816436dafc5c64bd0070901.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGxpdWhhby0t,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"  />
+</p>
+<ul>
+<li>
+<p>终止条件：每一次dfs都是将从根节点到叶子节点的数据依次存入num，程序走到叶子节点，即num.size() == k，将符合条件结果保存，并结束递归。</p>
+</li>
+<li>
+<p>循环：使用for循环横向遍历，递归纵向遍历</p>
+</li>
+</ul>
+<h5 id="剪枝">剪枝<a hidden class="anchor" aria-hidden="true" href="#剪枝">#</a></h5>
+<blockquote>
+<p>因为回溯的本质是穷举，穷举所有可能，然后选出我们想要的答案，如果想让回溯法高效一些，可以加一些剪枝的操作，但也改不了回溯法就是穷举的本质。</p>
+</blockquote>
+<p>当n=4,k=4时，由下图可看出第一层for循环的时候，从元素2开始的遍历都没有意义了。在第二层for循环，从元素3开始的遍历都没有意义了。我们可以使用剪枝不进行这些搜索。</p>
+<p><img loading="lazy" src="https://img-blog.csdnimg.cn/28889b7d02954c42aff228dae7e3258d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAbGxpdWhhby0t,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"  />
+</p>
+<ul>
+<li>剪枝精髓是：for循环在寻找起点的时候要有一个范围，如果这个起点到集合终止之间的元素已经不够题目要求的k个元素了，就没有必要搜索了。</li>
+</ul>
+<h4 id="代码-1">代码<a hidden class="anchor" aria-hidden="true" href="#代码-1">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n, m;
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> num;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(<span style="color:#66d9ef">int</span> k) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (num.size() <span style="color:#f92672">&gt;</span> m <span style="color:#f92672">||</span> num.size() <span style="color:#f92672">+</span> (n <span style="color:#f92672">-</span> k <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> m)		<span style="color:#75715e">// 剪枝
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (num.size() <span style="color:#f92672">==</span> m) {		<span style="color:#75715e">// 剪枝
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> m; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> num[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    num.push_back(k);
+</span></span><span style="display:flex;"><span>    dfs(k <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    num.pop_back();		<span style="color:#75715e">// 回溯
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    dfs(k <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    cin <span style="color:#f92672">&gt;&gt;</span> n <span style="color:#f92672">&gt;&gt;</span> m;
+</span></span><span style="display:flex;"><span>    dfs(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="n-皇后问题httpswwwacwingcomproblemcontent845"><a href="https://www.acwing.com/problem/content/845/">n-皇后问题</a><a hidden class="anchor" aria-hidden="true" href="#n-皇后问题httpswwwacwingcomproblemcontent845">#</a></h3>
+<h4 id="题目描述-2">题目描述<a hidden class="anchor" aria-hidden="true" href="#题目描述-2">#</a></h4>
+<p>n−皇后问题是指将 n 个皇后放在 n×n 的国际象棋棋盘上，使得皇后不能相互攻击到，即任意两个皇后都不能处于同一行、同一列或同一斜线上。</p>
+<!-- raw HTML omitted -->
+<p>现在给定整数 n，请你输出所有的满足条件的棋子摆法。</p>
+<h4 id="输入格式-1">输入格式<a hidden class="anchor" aria-hidden="true" href="#输入格式-1">#</a></h4>
+<p>共一行，包含整数 n。</p>
+<h4 id="输出格式-1">输出格式<a hidden class="anchor" aria-hidden="true" href="#输出格式-1">#</a></h4>
+<p>每个解决方案占 n 行，每行输出一个长度为 n 的字符串，用来表示完整的棋盘状态。</p>
+<p>其中 <code>.</code> 表示某一个位置的方格状态为空，<code>Q</code> 表示某一个位置的方格上摆着皇后。</p>
+<p>每个方案输出完成后，输出一个空行。</p>
+<p><strong>注意：行末不能有多余空格。</strong></p>
+<p>输出方案的顺序任意，只要不重复且没有遗漏即可。</p>
+<h4 id="数据范围-2">数据范围<a hidden class="anchor" aria-hidden="true" href="#数据范围-2">#</a></h4>
+<p>1≤n≤9</p>
+<h4 id="输入样例-1">输入样例<a hidden class="anchor" aria-hidden="true" href="#输入样例-1">#</a></h4>
+<pre tabindex="0"><code>4
+</code></pre><h4 id="输出样例-1">输出样例<a hidden class="anchor" aria-hidden="true" href="#输出样例-1">#</a></h4>
+<pre tabindex="0"><code>.Q..
+...Q
+Q...
+..Q.
+
+..Q.
+Q...
+...Q
+.Q..
+</code></pre><h4 id="算法分析-2">算法分析<a hidden class="anchor" aria-hidden="true" href="#算法分析-2">#</a></h4>
+<ul>
+<li>按行枚举</li>
+</ul>
+<p><img loading="lazy" src="https://cdn.acwing.com/media/article/image/2022/05/05/3019_d7a30075cc-%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220505182615.jpg" alt="微信图片_20220505182615.jpg"  />
+</p>
+<h4 id="代码-2">代码<a hidden class="anchor" aria-hidden="true" href="#代码-2">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;	<span style="color:#75715e">// 对角线为 2n-1 条
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> g[N][N];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> col[N], dg[N], udg[N];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">==</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i) puts(g[i]);
+</span></span><span style="display:flex;"><span>        puts(<span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; y <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>y)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>col[y] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>dg[y <span style="color:#f92672">-</span> x <span style="color:#f92672">+</span> n] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>udg[y <span style="color:#f92672">+</span> x]) {		<span style="color:#75715e">// 剪枝
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            col[y] <span style="color:#f92672">=</span> dg[y <span style="color:#f92672">-</span> x <span style="color:#f92672">+</span> n] <span style="color:#f92672">=</span> udg[y <span style="color:#f92672">+</span> x] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>            g[x][y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Q&#39;</span>;
+</span></span><span style="display:flex;"><span>            dfs(x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            g[x][y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span>;		<span style="color:#75715e">// 回溯
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            col[y] <span style="color:#f92672">=</span> dg[y <span style="color:#f92672">-</span> x <span style="color:#f92672">+</span> n] <span style="color:#f92672">=</span> udg[y <span style="color:#f92672">+</span> x] <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    cin <span style="color:#f92672">&gt;&gt;</span> n;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>j)
+</span></span><span style="display:flex;"><span>            g[i][j] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span>;
+</span></span><span style="display:flex;"><span>    dfs(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="http://example.org/">XStar</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
